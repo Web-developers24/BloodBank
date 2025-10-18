@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.DonorController">
+    <children>
+        <VBox spacing="10" alignment="CENTER" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+              AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+            <Label text="Donor Registration" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="10" vgap="10">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Blood Group:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtBloodGroup" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtPhone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Button text="Save Donor" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                        onAction="#saveDonor"/>
+            </GridPane>
+
+            <Label fx:id="lblStatus" text="" style="-fx-text-fill: green;"/>
+        </VBox>
+    </children>
+</AnchorPane>

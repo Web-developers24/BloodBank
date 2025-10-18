@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Oracle Database Connection -->
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+        <property name="hibernate.connection.username">system</property>
+        <property name="hibernate.connection.password">SSN</property>
+
+        <!-- Hibernate Settings -->
+        <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Mapped Classes -->
+        <mapping class="org.example.model.Donor"/>
+        <mapping class="org.example.model.Recipient"/>
+        <mapping class="org.example.model.BloodStock"/>
+        <mapping class="org.example.model.Donation"/>
+        <mapping class="org.example.model.Transfusion"/>
+
+    </session-factory>
+</hibernate-configuration>
+
