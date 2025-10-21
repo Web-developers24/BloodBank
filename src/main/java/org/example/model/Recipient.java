@@ -17,6 +17,14 @@ public class Recipient {
 
     public Recipient() {}
 
+    public Recipient(String fullName, String bloodGroupRequired, String phone) {
+        this.fullName = fullName;
+        this.bloodGroupRequired = bloodGroupRequired;
+        this.phone = phone;
+        this.requestDate = LocalDate.now(); // auto-set request date to today
+    }
+
+
     // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

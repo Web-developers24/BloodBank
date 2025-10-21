@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.MainMenuController"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: #f8f9fa;">
+    <VBox alignment="CENTER" spacing="20" prefWidth="600" prefHeight="400">
+        <Label text=" Blood Bank Management System"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+        <Button text="Donor Registration" onAction="#openDonorForm"
+                style="-fx-font-size: 14px; -fx-pref-width: 200;"/>
+        <Button text="Donor List" onAction="#openDonorList"
+                style="-fx-font-size: 14px; -fx-pref-width: 200;"/>
+        <Button text="Recipient Registration" onAction="#openRecipientForm"
+                style="-fx-font-size: 14px; -fx-pref-width: 200;"/>
+        <Button text="Recipient List" onAction="#openRecipientList"
+                style="-fx-font-size: 14px; -fx-pref-width: 200;"/>
+        <Button text="View Blood Stock" onAction="#openBloodStock"
+                style="-fx-font-size: 14px; -fx-pref-width: 200;"/>
+
+    </VBox>
+</AnchorPane>

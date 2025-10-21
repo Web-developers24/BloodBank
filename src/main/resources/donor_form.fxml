@@ -27,6 +27,11 @@
 
                 <Button text="Save Donor" GridPane.rowIndex="3" GridPane.columnIndex="1"
                         onAction="#saveDonor"/>
+
+                <Button text="⬅ Back to Main Menu"
+                        onAction="#goBackToMenu"
+                        style="-fx-font-size: 13px; -fx-background-color: #dfe6e9;"/>
+
             </GridPane>
 
             <Label fx:id="lblStatus" text="" style="-fx-text-fill: green;"/>

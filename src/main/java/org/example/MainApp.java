@@ -7,13 +7,21 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
+    private static Stage primaryStage; // ✅ Global reference to the main stage
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/donor_form.fxml"));
+        primaryStage = stage; // Save reference
+
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("Blood Bank - Donor Registration");
+        stage.setTitle("Blood Bank - Main Menu");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public static void main(String[] args) {

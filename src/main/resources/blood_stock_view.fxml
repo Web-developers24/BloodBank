@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.BloodStockController"
+            prefWidth="600" prefHeight="400">
+
+    <children>
+        <Label text="Blood Stock Details" layoutX="200" layoutY="20"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <TableView fx:id="tblStock" layoutX="50" layoutY="60" prefWidth="500" prefHeight="250">
+            <columns>
+                <TableColumn fx:id="colGroup" text="Blood Group" prefWidth="150" />
+                <TableColumn fx:id="colUnits" text="Units Available" prefWidth="150" />
+                <TableColumn fx:id="colUpdated" text="Last Updated" prefWidth="200" />
+            </columns>
+        </TableView>
+
+        <Button text="⬅ Back to Main Menu"
+                onAction="#goBackToMenu"
+                style="-fx-font-size: 13px; -fx-background-color: #dfe6e9;"/>
+    </children>
+</AnchorPane>

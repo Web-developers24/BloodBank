@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controller.DonorListController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Label text="Donor List" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="donorTable" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colName" text="Full Name" prefWidth="200"/>
+            <TableColumn fx:id="colBloodGroup" text="Blood Group" prefWidth="100"/>
+            <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
+            <TableColumn fx:id="colLastDonation" text="Last Donation Date" prefWidth="150"/>
+
+
+        </columns>
+
+
+    </TableView>
+    <Button text="⬅ Back to Main Menu"
+            onAction="#goBackToMenu"
+            style="-fx-font-size: 13px; -fx-background-color: #dfe6e9;"/>
+</VBox>
