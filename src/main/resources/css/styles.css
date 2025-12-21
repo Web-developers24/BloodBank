@@ -1,0 +1,262 @@
+/* Blood Bank Management System - Main Stylesheet */
+
+/* Root and Global Styles */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Login Container */
+.login-container {
+    -fx-background-color: linear-gradient(to bottom right, #8b0000, #c41e3a);
+}
+
+.login-container .title-label {
+    -fx-text-fill: white;
+}
+
+.login-container .subtitle-label {
+    -fx-text-fill: #ffcccc;
+}
+
+.login-container .hint-label {
+    -fx-text-fill: #ffcccc;
+    -fx-font-size: 12px;
+}
+
+.login-container Label {
+    -fx-text-fill: white;
+}
+
+.login-container TextField,
+.login-container PasswordField {
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+}
+
+/* Buttons */
+.button {
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.primary-button {
+    -fx-background-color: #c41e3a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.primary-button:hover {
+    -fx-background-color: #a01830;
+}
+
+.secondary-button {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #5a6268;
+}
+
+.danger-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+}
+
+.danger-button:hover {
+    -fx-background-color: #c82333;
+}
+
+.action-button {
+    -fx-background-color: white;
+    -fx-border-color: #c41e3a;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #c41e3a;
+}
+
+.action-button:hover {
+    -fx-background-color: #c41e3a;
+    -fx-text-fill: white;
+}
+
+/* Header Bar */
+.header-bar {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Cards */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.stat-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 14px;
+}
+
+.stat-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c41e3a;
+}
+
+.section-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.form-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Blood Cards */
+.blood-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 15 20;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-min-width: 80;
+}
+
+.blood-card:hover {
+    -fx-border-color: #c41e3a;
+}
+
+.blood-type {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c41e3a;
+}
+
+.blood-count {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.blood-card-small {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+}
+
+.blood-type-small {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c41e3a;
+}
+
+/* Tables */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #fff0f2;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Form Controls */
+.text-field, .password-field, .text-area, .combo-box, .date-picker {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ddd;
+    -fx-padding: 8;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #c41e3a;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 5 10;
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+}
+
+.list-view .list-cell {
+    -fx-padding: 8;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Menu Bar */
+.menu-bar {
+    -fx-background-color: #333;
+}
+
+.menu-bar .menu {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #444;
+}
+
+/* Scroll Pane */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Check Box */
+.check-box {
+    -fx-text-fill: #333;
+}
+
+.check-box:selected > .box {
+    -fx-background-color: #c41e3a;
+}

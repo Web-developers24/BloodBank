@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.bbms.controllers.RecipientFormController"
+            styleClass="form-container" prefWidth="500">
+
+    <top>
+        <VBox spacing="5">
+            <Label fx:id="formTitle" text="Add New Recipient" styleClass="page-title"/>
+            <Label fx:id="formSubtitle" text="Enter recipient details" styleClass="form-subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15">
+                <padding><Insets top="20" right="10"/></padding>
+                
+                <!-- Personal Information -->
+                <Label text="Personal Information" styleClass="section-title"/>
+                
+                <GridPane hgap="15" vgap="10">
+                    <Label text="Full Name *" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Date of Birth *" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <DatePicker fx:id="dobPicker" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Gender *" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="genderCombo" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Blood Group *" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="bloodGroupCombo" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="300"/>
+                </GridPane>
+                
+                <Separator/>
+                
+                <!-- Contact Information -->
+                <Label text="Contact Information" styleClass="section-title"/>
+                
+                <GridPane hgap="15" vgap="10">
+                    <Label text="Phone *" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="phoneField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Email" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emailField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Address" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="addressArea" GridPane.rowIndex="2" GridPane.columnIndex="1" 
+                              prefWidth="300" prefRowCount="2"/>
+                </GridPane>
+                
+                <Separator/>
+                
+                <!-- Medical Information -->
+                <Label text="Medical Information" styleClass="section-title"/>
+                
+                <GridPane hgap="15" vgap="10">
+                    <Label text="Hospital Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="hospitalField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Doctor Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="doctorField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Diagnosis" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextArea fx:id="diagnosisArea" GridPane.rowIndex="2" GridPane.columnIndex="1" 
+                              prefWidth="300" prefRowCount="2"/>
+                </GridPane>
+                
+                <Separator/>
+                
+                <!-- Emergency Contact -->
+                <Label text="Emergency Contact" styleClass="section-title"/>
+                
+                <GridPane hgap="15" vgap="10">
+                    <Label text="Contact Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emergencyNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Relationship" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="relationshipField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300"/>
+                    
+                    <Label text="Contact Phone" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emergencyPhoneField" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300"/>
+                </GridPane>
+                
+                <Label fx:id="errorLabel" styleClass="error-label" visible="false" managed="false"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <padding><Insets top="20"/></padding>
+            <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-btn"/>
+            <Button text="Save Recipient" onAction="#handleSave" styleClass="success-btn"/>
+        </HBox>
+    </bottom>
+</BorderPane>

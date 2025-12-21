@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.bbms.controllers.ReportsController"
+            styleClass="main-container">
+
+    <top>
+        <VBox spacing="15">
+            <Label text="Reports" styleClass="page-title"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Report Type:"/>
+                <ComboBox fx:id="reportTypeCombo" prefWidth="250"/>
+                <Label text="Date Range:"/>
+                <DatePicker fx:id="fromDatePicker"/>
+                <Label text="to"/>
+                <DatePicker fx:id="toDatePicker"/>
+                <Button text="Generate" onAction="#handleGenerate" styleClass="primary-btn"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane fx:id="reportTabPane" VBox.vgrow="ALWAYS">
+            <Tab text="Report Preview" closable="false">
+                <ScrollPane fitToWidth="true">
+                    <VBox fx:id="reportContent" spacing="20">
+                        <padding><Insets topRightBottomLeft="20"/></padding>
+                        
+                        <!-- Report Header -->
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label fx:id="reportTitle" text="Select a report type to generate" styleClass="report-title"/>
+                            <Label fx:id="reportDate" text="" styleClass="report-date"/>
+                        </VBox>
+                        
+                        <Separator/>
+                        
+                        <!-- Report Body - Dynamically populated -->
+                        <VBox fx:id="reportBody" spacing="15"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+            
+            <Tab text="Charts" closable="false">
+                <VBox fx:id="chartsContainer" spacing="20">
+                    <padding><Insets topRightBottomLeft="20"/></padding>
+                    <Label text="Charts will be displayed here" style="-fx-font-style: italic; -fx-text-fill: #666;"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="280" styleClass="sidebar-panel">
+            <padding><Insets topRightBottomLeft="10"/></padding>
+            
+            <Label text="Available Reports" styleClass="section-title"/>
+            
+            <VBox spacing="5">
+                <Button text="Inventory Summary" onAction="#handleInventoryReport" maxWidth="Infinity" styleClass="report-btn"/>
+                <Button text="Donation Statistics" onAction="#handleDonationReport" maxWidth="Infinity" styleClass="report-btn"/>
+                <Button text="Request Analysis" onAction="#handleRequestReport" maxWidth="Infinity" styleClass="report-btn"/>
+                <Button text="Donor Activity" onAction="#handleDonorReport" maxWidth="Infinity" styleClass="report-btn"/>
+                <Button text="Expiry Report" onAction="#handleExpiryReport" maxWidth="Infinity" styleClass="report-btn"/>
+                <Button text="Blood Usage" onAction="#handleUsageReport" maxWidth="Infinity" styleClass="report-btn"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <Label text="Quick Stats (30 Days)" styleClass="section-title"/>
+            
+            <GridPane hgap="10" vgap="8">
+                <Label text="Donations:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="donationsStatLabel" text="--" styleClass="stat-inline" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Transfusions:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="transfusionsStatLabel" text="--" styleClass="stat-inline" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Label text="Requests:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="requestsStatLabel" text="--" styleClass="stat-inline" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <Label text="Expired Units:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="expiredStatLabel" text="--" styleClass="stat-inline-warning" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+            
+            <Separator/>
+            
+            <Label text="Export Options" styleClass="section-title"/>
+            
+            <HBox spacing="10">
+                <Button text="PDF" onAction="#handleExportPdf" styleClass="export-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Excel" onAction="#handleExportExcel" styleClass="export-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Print" onAction="#handlePrint" styleClass="export-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+    </right>
+</BorderPane>

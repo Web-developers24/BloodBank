@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.bbms.controllers.BloodRequestsController"
+            styleClass="main-container">
+
+    <top>
+        <VBox spacing="15">
+            <Label text="Blood Requests" styleClass="page-title"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search by recipient, hospital..." prefWidth="300"/>
+                <Button text="Search" onAction="#handleSearch" styleClass="primary-btn"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="New Request" onAction="#handleNewRequest" styleClass="success-btn"/>
+            </HBox>
+            
+            <HBox spacing="10">
+                <ComboBox fx:id="statusFilter" promptText="Status" prefWidth="150"/>
+                <ComboBox fx:id="priorityFilter" promptText="Priority" prefWidth="150"/>
+                <ComboBox fx:id="bloodGroupFilter" promptText="Blood Group" prefWidth="120"/>
+                <Button text="Apply Filters" onAction="#handleApplyFilters" styleClass="primary-btn"/>
+                <Button text="Clear" onAction="#handleClearFilters" styleClass="secondary-btn"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding><Insets top="20"/></padding>
+            
+            <!-- Urgent Requests Section -->
+            <VBox fx:id="urgentSection" spacing="5" styleClass="urgent-section" visible="false" managed="false">
+                <Label text="⚠ Urgent Requests" styleClass="urgent-title"/>
+                <TableView fx:id="urgentRequestsTable" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="urgentIdCol" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="urgentRecipientCol" text="Recipient" prefWidth="150"/>
+                        <TableColumn fx:id="urgentBloodGroupCol" text="Blood Group" prefWidth="100"/>
+                        <TableColumn fx:id="urgentUnitsCol" text="Units" prefWidth="60"/>
+                        <TableColumn fx:id="urgentHospitalCol" text="Hospital" prefWidth="150"/>
+                        <TableColumn fx:id="urgentTimeCol" text="Requested" prefWidth="120"/>
+                        <TableColumn fx:id="urgentActionsCol" text="Actions" prefWidth="180"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <!-- All Requests -->
+            <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="dateColumn" text="Request Date" prefWidth="100"/>
+                    <TableColumn fx:id="recipientColumn" text="Recipient" prefWidth="150"/>
+                    <TableColumn fx:id="bloodGroupColumn" text="Blood Group" prefWidth="100"/>
+                    <TableColumn fx:id="componentColumn" text="Component" prefWidth="120"/>
+                    <TableColumn fx:id="unitsColumn" text="Units" prefWidth="60"/>
+                    <TableColumn fx:id="priorityColumn" text="Priority" prefWidth="80"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="hospitalColumn" text="Hospital" prefWidth="150"/>
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="180"/>
+                </columns>
+                <placeholder>
+                    <Label text="No blood requests found"/>
+                </placeholder>
+            </TableView>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Previous" fx:id="prevPageBtn" onAction="#handlePrevPage" styleClass="secondary-btn"/>
+                <Label fx:id="pageLabel" text="Page 1 of 1"/>
+                <Button text="Next" fx:id="nextPageBtn" onAction="#handleNextPage" styleClass="secondary-btn"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="250" styleClass="sidebar-panel">
+            <padding><Insets topRightBottomLeft="10"/></padding>
+            
+            <Label text="Request Summary" styleClass="section-title"/>
+            
+            <VBox styleClass="stat-card">
+                <Label text="Pending Requests" styleClass="stat-label"/>
+                <Label fx:id="pendingLabel" text="0" styleClass="stat-value-warning"/>
+            </VBox>
+            
+            <VBox styleClass="stat-card urgent-card">
+                <Label text="Urgent/Emergency" styleClass="stat-label"/>
+                <Label fx:id="urgentLabel" text="0" styleClass="stat-value-danger"/>
+            </VBox>
+            
+            <VBox styleClass="stat-card">
+                <Label text="Fulfilled Today" styleClass="stat-label"/>
+                <Label fx:id="fulfilledTodayLabel" text="0" styleClass="stat-value-success"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <Label text="Quick Actions" styleClass="section-title"/>
+            <Button text="Process Selected" onAction="#handleProcessSelected" maxWidth="Infinity" styleClass="primary-btn"/>
+            <Button text="View Compatibility" onAction="#handleViewCompatibility" maxWidth="Infinity" styleClass="secondary-btn"/>
+            <Button text="Export Pending" onAction="#handleExportPending" maxWidth="Infinity" styleClass="secondary-btn"/>
+        </VBox>
+    </right>
+</BorderPane>

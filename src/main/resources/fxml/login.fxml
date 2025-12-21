@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.bbms.controller.LoginController"
+      styleClass="login-container">
+    
+    <padding>
+        <Insets bottom="50" left="50" right="50" top="50"/>
+    </padding>
+    
+    <!-- Title -->
+    <VBox alignment="CENTER" spacing="5">
+        <Label text="🩸" style="-fx-font-size: 48px;"/>
+        <Label text="Blood Bank Management System" styleClass="title-label">
+            <font>
+                <Font name="System Bold" size="24"/>
+            </font>
+        </Label>
+        <Label text="Login to continue" styleClass="subtitle-label"/>
+    </VBox>
+    
+    <!-- Login Form -->
+    <VBox alignment="CENTER" spacing="15" maxWidth="300">
+        <VBox spacing="5">
+            <Label text="Username"/>
+            <TextField fx:id="usernameField" promptText="Enter username" 
+                       onKeyPressed="#handleKeyPress" prefWidth="300"/>
+        </VBox>
+        
+        <VBox spacing="5">
+            <Label text="Password"/>
+            <PasswordField fx:id="passwordField" promptText="Enter password" 
+                          onKeyPressed="#handleKeyPress" prefWidth="300"/>
+        </VBox>
+        
+        <VBox spacing="10" alignment="CENTER">
+            <Button fx:id="loginButton" text="Login" onAction="#handleLogin" 
+                    styleClass="primary-button" prefWidth="300"/>
+            <Button text="Exit" onAction="#handleExit" 
+                    styleClass="secondary-button" prefWidth="300"/>
+        </VBox>
+    </VBox>
+    
+    <!-- Footer -->
+    <Label text="Default: admin / admin123" styleClass="hint-label"/>
+</VBox>
