@@ -47,7 +47,7 @@ mvn clean javafx:run
 
 Default login: `admin` / `admin123`
 
-## Project Structure
+## Project Structure:
 
 ```
 src/main/java/com/bbms/
