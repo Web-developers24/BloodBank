@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.bbms.controller.DashboardController"
+            styleClass="dashboard">
+    
+    <!-- Top Menu Bar -->
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Refresh" onAction="#handleRefresh"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Logout" onAction="#handleLogout"/>
+                </Menu>
+                <Menu text="Manage">
+                    <MenuItem text="Donors" onAction="#navigateToDonors"/>
+                    <MenuItem text="Recipients" onAction="#navigateToRecipients"/>
+                    <MenuItem text="Blood Stock" onAction="#navigateToBloodStock"/>
+                    <MenuItem text="Donations" onAction="#navigateToDonations"/>
+                    <MenuItem text="Blood Requests" onAction="#navigateToRequests"/>
+                </Menu>
+                <Menu text="Reports">
+                    <MenuItem text="Generate Reports" onAction="#navigateToReports"/>
+                </Menu>
+            </MenuBar>
+            
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="10"/>
+                </padding>
+                <Label text="🩸 Blood Bank Dashboard" styleClass="header-title">
+                    <font>
+                        <Font name="System Bold" size="20"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="welcomeLabel" text="Welcome, User"/>
+                <Button text="Logout" onAction="#handleLogout" styleClass="secondary-button"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20"/>
+                </padding>
+                
+                <!-- Quick Stats -->
+                <HBox spacing="20" alignment="CENTER">
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                        <Label text="Total Donors" styleClass="stat-label"/>
+                        <Label fx:id="totalDonorsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                        <Label text="Total Recipients" styleClass="stat-label"/>
+                        <Label fx:id="totalRecipientsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="5">
+                        <Label text="Pending Requests" styleClass="stat-label"/>
+                        <Label fx:id="pendingRequestsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Blood Stock Summary -->
+                <VBox styleClass="section-card" spacing="10">
+                    <Label text="Blood Stock Summary" styleClass="section-title"/>
+                    <HBox spacing="15" alignment="CENTER">
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="O+" styleClass="blood-type"/>
+                            <Label fx:id="stockOPos" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="O-" styleClass="blood-type"/>
+                            <Label fx:id="stockONeg" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="A+" styleClass="blood-type"/>
+                            <Label fx:id="stockAPos" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="A-" styleClass="blood-type"/>
+                            <Label fx:id="stockANeg" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="B+" styleClass="blood-type"/>
+                            <Label fx:id="stockBPos" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="B-" styleClass="blood-type"/>
+                            <Label fx:id="stockBNeg" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="AB+" styleClass="blood-type"/>
+                            <Label fx:id="stockABPos" text="0" styleClass="blood-count"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="blood-card">
+                            <Label text="AB-" styleClass="blood-type"/>
+                            <Label fx:id="stockABNeg" text="0" styleClass="blood-count"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <!-- Quick Actions -->
+                <VBox styleClass="section-card" spacing="10">
+                    <Label text="Quick Actions" styleClass="section-title"/>
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button text="📋 Manage Donors" onAction="#navigateToDonors" 
+                                styleClass="action-button" prefWidth="150"/>
+                        <Button text="🏥 Manage Recipients" onAction="#navigateToRecipients" 
+                                styleClass="action-button" prefWidth="150"/>
+                        <Button text="🩸 Blood Stock" onAction="#navigateToBloodStock" 
+                                styleClass="action-button" prefWidth="150"/>
+                        <Button text="💉 Donations" onAction="#navigateToDonations" 
+                                styleClass="action-button" prefWidth="150"/>
+                        <Button text="📊 Reports" onAction="#navigateToReports" 
+                                styleClass="action-button" prefWidth="150"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Alerts -->
+                <VBox styleClass="section-card" spacing="10">
+                    <Label text="Alerts &amp; Notifications" styleClass="section-title"/>
+                    <ListView fx:id="alertsList" prefHeight="150"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

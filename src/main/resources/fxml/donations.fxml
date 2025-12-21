@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.bbms.controllers.DonationsController"
+            styleClass="main-container">
+
+    <top>
+        <VBox spacing="15">
+            <Label text="Donations" styleClass="page-title"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search by donor name or ID..." prefWidth="300"/>
+                <Button text="Search" onAction="#handleSearch" styleClass="primary-btn"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Record New Donation" onAction="#handleNewDonation" styleClass="success-btn"/>
+            </HBox>
+            
+            <HBox spacing="10">
+                <DatePicker fx:id="fromDatePicker" promptText="From Date"/>
+                <DatePicker fx:id="toDatePicker" promptText="To Date"/>
+                <ComboBox fx:id="statusFilter" promptText="Status" prefWidth="150"/>
+                <ComboBox fx:id="bloodGroupFilter" promptText="Blood Group" prefWidth="120"/>
+                <Button text="Apply Filters" onAction="#handleApplyFilters" styleClass="primary-btn"/>
+                <Button text="Clear" onAction="#handleClearFilters" styleClass="secondary-btn"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding><Insets top="20"/></padding>
+            
+            <TableView fx:id="donationsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="100"/>
+                    <TableColumn fx:id="donorColumn" text="Donor" prefWidth="180"/>
+                    <TableColumn fx:id="bloodGroupColumn" text="Blood Group" prefWidth="100"/>
+                    <TableColumn fx:id="volumeColumn" text="Volume (ml)" prefWidth="100"/>
+                    <TableColumn fx:id="componentColumn" text="Component" prefWidth="120"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+                    <TableColumn fx:id="collectedByColumn" text="Collected By" prefWidth="130"/>
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150"/>
+                </columns>
+                <placeholder>
+                    <Label text="No donations found"/>
+                </placeholder>
+            </TableView>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Previous" fx:id="prevPageBtn" onAction="#handlePrevPage" styleClass="secondary-btn"/>
+                <Label fx:id="pageLabel" text="Page 1 of 1"/>
+                <Button text="Next" fx:id="nextPageBtn" onAction="#handleNextPage" styleClass="secondary-btn"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="250" styleClass="sidebar-panel">
+            <padding><Insets topRightBottomLeft="10"/></padding>
+            
+            <Label text="Statistics" styleClass="section-title"/>
+            
+            <VBox styleClass="stat-card">
+                <Label text="Total Donations" styleClass="stat-label"/>
+                <Label fx:id="totalDonationsLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+            
+            <VBox styleClass="stat-card">
+                <Label text="This Month" styleClass="stat-label"/>
+                <Label fx:id="monthlyDonationsLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+            
+            <VBox styleClass="stat-card">
+                <Label text="Today" styleClass="stat-label"/>
+                <Label fx:id="todayDonationsLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+            
+            <VBox styleClass="stat-card">
+                <Label text="Total Volume (L)" styleClass="stat-label"/>
+                <Label fx:id="totalVolumeLabel" text="0.0" styleClass="stat-value"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <Label text="Quick Actions" styleClass="section-title"/>
+            <Button text="Schedule Donation" onAction="#handleSchedule" maxWidth="Infinity" styleClass="primary-btn"/>
+            <Button text="Export Report" onAction="#handleExportReport" maxWidth="Infinity" styleClass="secondary-btn"/>
+            <Button text="Print Labels" onAction="#handlePrintLabels" maxWidth="Infinity" styleClass="secondary-btn"/>
+        </VBox>
+    </right>
+</BorderPane>

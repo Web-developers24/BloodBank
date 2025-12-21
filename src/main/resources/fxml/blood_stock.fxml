@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.bbms.controller.BloodStockController">
+    
+    <!-- Top -->
+    <top>
+        <VBox spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="10"/>
+                </padding>
+                <Button text="← Back" onAction="#handleBack" styleClass="secondary-button"/>
+                <Label text="Blood Stock Management" styleClass="header-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Add Stock" onAction="#handleAddStock" styleClass="primary-button"/>
+                <Button text="⟳ Refresh" onAction="#handleRefresh"/>
+            </HBox>
+            
+            <!-- Stock Summary -->
+            <HBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="0"/>
+                </padding>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="O+" styleClass="blood-type-small"/>
+                    <Label fx:id="stockOPos" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="O-" styleClass="blood-type-small"/>
+                    <Label fx:id="stockONeg" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="A+" styleClass="blood-type-small"/>
+                    <Label fx:id="stockAPos" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="A-" styleClass="blood-type-small"/>
+                    <Label fx:id="stockANeg" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="B+" styleClass="blood-type-small"/>
+                    <Label fx:id="stockBPos" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="B-" styleClass="blood-type-small"/>
+                    <Label fx:id="stockBNeg" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="AB+" styleClass="blood-type-small"/>
+                    <Label fx:id="stockABPos" text="0"/>
+                </VBox>
+                <VBox alignment="CENTER" styleClass="blood-card-small">
+                    <Label text="AB-" styleClass="blood-type-small"/>
+                    <Label fx:id="stockABNeg" text="0"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Filter Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="0"/>
+                </padding>
+                <Label text="Filter:"/>
+                <ComboBox fx:id="bloodGroupFilter" promptText="Blood Group" prefWidth="120"/>
+                <ComboBox fx:id="componentFilter" promptText="Component" prefWidth="150"/>
+                <Button text="Apply" onAction="#handleFilter" styleClass="secondary-button"/>
+                <Button text="Clear" onAction="#handleClearFilter"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Center -->
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="0"/>
+            </padding>
+            
+            <!-- Stock Table -->
+            <TableView fx:id="stockTable" HBox.hgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="bloodGroupCol" text="Blood Group" prefWidth="100"/>
+                    <TableColumn fx:id="componentCol" text="Component" prefWidth="120"/>
+                    <TableColumn fx:id="unitsCol" text="Units" prefWidth="80"/>
+                    <TableColumn fx:id="expiryCol" text="Expiry Date" prefWidth="120"/>
+                    <TableColumn fx:id="locationCol" text="Location" prefWidth="120"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="No blood stock entries"/>
+                </placeholder>
+            </TableView>
+            
+            <!-- Alerts Panel -->
+            <VBox spacing="10" prefWidth="250">
+                <Label text="Stock Alerts" styleClass="section-title"/>
+                <ListView fx:id="alertsList" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </HBox>
+    </center>
+    
+    <!-- Bottom -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="10"/>
+            </padding>
+            <Button text="Mark Expired" onAction="#handleMarkExpired"/>
+            <Button text="Delete" onAction="#handleDeleteStock" styleClass="danger-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

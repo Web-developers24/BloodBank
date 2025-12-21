@@ -2,48 +2,39 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
     <session-factory>
-
-        <!-- ✅ Oracle Database Connection -->
+        <!-- Oracle Database Connection -->
         <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
         <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
-        <property name="hibernate.connection.username">system</property>
-        <property name="hibernate.connection.password">SSN</property>
+        <property name="hibernate.connection.username">bloodbank</property>
+        <property name="hibernate.connection.password">bloodbank123</property>
 
-        <!-- ✅ Oracle Dialect -->
+        <!-- Oracle Dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
 
-        <!-- ✅ Schema management -->
+        <!-- Schema management - use 'validate' in production -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- ✅ Connection Handling -->
-        <property name="hibernate.connection.release_mode">after_transaction</property>
-        <property name="hibernate.connection.autocommit">false</property>
+        <!-- Connection Pool (HikariCP) -->
+        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+        <property name="hibernate.hikari.minimumIdle">2</property>
+        <property name="hibernate.hikari.maximumPoolSize">10</property>
+        <property name="hibernate.hikari.idleTimeout">300000</property>
+        <property name="hibernate.hikari.connectionTimeout">20000</property>
+        <property name="hibernate.hikari.poolName">BloodBankHikariPool</property>
 
-        <!-- ✅ Connection Pooling (important for Oracle) -->
-<!--        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>-->
-<!--        <property name="hibernate.hikari.minimumIdle">2</property>-->
-<!--        <property name="hibernate.hikari.maximumPoolSize">10</property>-->
-<!--        <property name="hibernate.hikari.idleTimeout">300000</property>-->
-<!--        <property name="hibernate.hikari.maxLifetime">600000</property>-->
-<!--        <property name="hibernate.hikari.connectionTimeout">20000</property>-->
-<!--        <property name="hibernate.hikari.poolName">AilaysaHikariPool</property>-->
-
-
-        <property name="hibernate.connection.pool_size">1</property>
-
-        <!-- ✅ SQL Debugging -->
+        <!-- SQL Logging - set to false in production -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.use_sql_comments">true</property>
 
-        <!-- ✅ Entity Mappings -->
-        <mapping class="org.example.model.Donor"/>
-        <mapping class="org.example.model.Recipient"/>
-        <mapping class="org.example.model.BloodStock"/>
-        <mapping class="org.example.model.Donation"/>
-        <mapping class="org.example.model.Transfusion"/>
-        <mapping class="org.example.model.User"/>
+        <!-- Performance Settings -->
+        <property name="hibernate.jdbc.batch_size">20</property>
+        <property name="hibernate.order_inserts">true</property>
+        <property name="hibernate.order_updates">true</property>
 
+        <!-- Entity Mappings (registered programmatically in HibernateUtil) -->
     </session-factory>
 </hibernate-configuration>

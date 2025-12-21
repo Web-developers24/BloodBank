@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.bbms.controller.DonorListController">
+    
+    <!-- Top -->
+    <top>
+        <VBox spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="10"/>
+                </padding>
+                <Button text="← Back" onAction="#handleBack" styleClass="secondary-button"/>
+                <Label text="Donor Management" styleClass="header-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Add Donor" onAction="#handleAddDonor" styleClass="primary-button"/>
+            </HBox>
+            
+            <!-- Filter Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets bottom="10" left="20" right="20" top="0"/>
+                </padding>
+                <TextField fx:id="searchField" promptText="Search by name or phone..." prefWidth="250"/>
+                <ComboBox fx:id="bloodGroupFilter" promptText="Blood Group" prefWidth="120"/>
+                <Button text="Search" onAction="#handleSearch" styleClass="secondary-button"/>
+                <Button text="Clear" onAction="#handleClearFilter"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Center - Table -->
+    <center>
+        <VBox>
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="0"/>
+            </padding>
+            <TableView fx:id="donorTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="nameCol" text="Full Name" prefWidth="180"/>
+                    <TableColumn fx:id="bloodGroupCol" text="Blood Group" prefWidth="100"/>
+                    <TableColumn fx:id="phoneCol" text="Phone" prefWidth="120"/>
+                    <TableColumn fx:id="genderCol" text="Gender" prefWidth="80"/>
+                    <TableColumn fx:id="donationsCol" text="Donations" prefWidth="80"/>
+                    <TableColumn fx:id="eligibleCol" text="Eligible" prefWidth="80"/>
+                </columns>
+                <placeholder>
+                    <Label text="No donors found"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+    
+    <!-- Bottom - Actions -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="10"/>
+            </padding>
+            <Button text="Check Eligibility" onAction="#handleCheckEligibility"/>
+            <Button text="Edit" onAction="#handleEditDonor" styleClass="secondary-button"/>
+            <Button text="Delete" onAction="#handleDeleteDonor" styleClass="danger-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

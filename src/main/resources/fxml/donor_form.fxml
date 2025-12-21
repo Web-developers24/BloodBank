@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.bbms.controller.DonorFormController">
+    
+    <VBox spacing="20">
+        <padding>
+            <Insets bottom="30" left="30" right="30" top="30"/>
+        </padding>
+        
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Back" onAction="#handleCancel" styleClass="secondary-button"/>
+            <Label fx:id="formTitle" text="Add New Donor" styleClass="header-title"/>
+        </HBox>
+        
+        <!-- Form -->
+        <VBox styleClass="form-card" spacing="20">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20"/>
+            </padding>
+            
+            <!-- Personal Info -->
+            <Label text="Personal Information" styleClass="section-title"/>
+            
+            <HBox spacing="20">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Full Name *"/>
+                    <TextField fx:id="nameField" promptText="Enter full name"/>
+                </VBox>
+                <VBox spacing="5" prefWidth="150">
+                    <Label text="Blood Group *"/>
+                    <ComboBox fx:id="bloodGroupCombo" promptText="Select" maxWidth="Infinity"/>
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="20">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Phone"/>
+                    <TextField fx:id="phoneField" promptText="Enter phone number"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Email"/>
+                    <TextField fx:id="emailField" promptText="Enter email"/>
+                </VBox>
+            </HBox>
+            
+            <VBox spacing="5">
+                <Label text="Address"/>
+                <TextArea fx:id="addressArea" promptText="Enter address" prefRowCount="2"/>
+            </VBox>
+            
+            <HBox spacing="20">
+                <VBox spacing="5" prefWidth="200">
+                    <Label text="Date of Birth"/>
+                    <DatePicker fx:id="dobPicker" maxWidth="Infinity"/>
+                </VBox>
+                <VBox spacing="5" prefWidth="150">
+                    <Label text="Gender"/>
+                    <ComboBox fx:id="genderCombo" promptText="Select" maxWidth="Infinity"/>
+                </VBox>
+                <VBox spacing="5" prefWidth="150">
+                    <Label text="Weight (kg)"/>
+                    <TextField fx:id="weightField" promptText="e.g., 65.5"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Medical Info -->
+            <Label text="Medical Information" styleClass="section-title"/>
+            
+            <VBox spacing="5">
+                <Label text="Medical Notes"/>
+                <TextArea fx:id="medicalNotesArea" promptText="Any medical conditions or notes..." 
+                          prefRowCount="3"/>
+            </VBox>
+            
+            <CheckBox fx:id="eligibleCheckbox" text="Eligible to Donate" selected="true"/>
+        </VBox>
+        
+        <!-- Buttons -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Clear" onAction="#handleClear"/>
+            <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
+            <Button text="Save Donor" onAction="#handleSave" styleClass="primary-button"/>
+        </HBox>
+    </VBox>
+</ScrollPane>
